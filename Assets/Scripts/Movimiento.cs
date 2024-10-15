@@ -12,12 +12,13 @@ public class Movimiento : MonoBehaviour
 
     private int posicionZ;
 
-    
+    public Mundo mundo;
     
     
     // Start is called before the first frame update
     void Start()
     {
+        
         
     }
 
@@ -54,6 +55,7 @@ public class Movimiento : MonoBehaviour
         if (posicionZ > carril)
         {
             carril = posicionZ;
+            mundo.CrearPiso();
         }
     }
 
