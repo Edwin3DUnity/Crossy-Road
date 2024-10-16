@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class Movimiento : MonoBehaviour
     private int posicionZ;
 
     public Mundo mundo;
+    public Transform grafico;
+    public LayerMask capaObstaculos;
+    public float distanciaVista = 1;
     
     
     // Start is called before the first frame update
@@ -42,6 +46,15 @@ public class Movimiento : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(grafico.position + Vector3.up * 0.5f , grafico.position + Vector3.up * 0.5f + grafico.forward * distanciaVista);
+       
+
+    }
+
     public void ActualizarPosicion()
     {
         posObjetivo = new Vector3(lateral, 0, posicionZ);
@@ -51,6 +64,13 @@ public class Movimiento : MonoBehaviour
 
     public void Avanzar()
     {
+        grafico.eulerAngles = Vector3.zero;
+        if (MirarAdelante())
+        {
+            print("Verdadero");
+            return;
+        }
+        
         posicionZ++;
         if (posicionZ > carril)
         {
@@ -61,6 +81,11 @@ public class Movimiento : MonoBehaviour
 
     public void Retroceder()
     {
+        grafico.eulerAngles = new Vector3(0,180,0);
+        if (MirarAdelante())
+        {
+            return;
+        }
         if (posicionZ > carril - 3)
         {
             posicionZ--;
@@ -69,8 +94,27 @@ public class Movimiento : MonoBehaviour
 
     public void MoverLados(int cuanto)
     {
+        
+        grafico.eulerAngles = new Vector3(0, 90 * cuanto, 0);
+        if (MirarAdelante())
+        {
+            return;
+        }
         lateral += cuanto;
         lateral = Mathf.Clamp(lateral, -4, 4);
+    }
+
+
+    public bool MirarAdelante()
+    {
+        RaycastHit hit;
+        Ray rayo = new Ray(grafico.position + Vector3.up * 0.5f, grafico.forward);
+
+        if (Physics.Raycast(rayo, out hit, distanciaVista ,capaObstaculos ))
+        {
+            return true;
+        }
+        return false;
     }
 }
 
