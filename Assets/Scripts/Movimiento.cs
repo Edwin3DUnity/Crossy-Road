@@ -70,7 +70,7 @@ public class Movimiento : MonoBehaviour
     public void MoverLados(int cuanto)
     {
         lateral += cuanto;
-        lateral = Mathf.Clamp(lateral, -5, 5);
+        lateral = Mathf.Clamp(lateral, -4, 4);
     }
 }
 
