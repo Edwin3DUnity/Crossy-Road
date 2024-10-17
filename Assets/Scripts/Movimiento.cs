@@ -19,6 +19,7 @@ public class Movimiento : MonoBehaviour
     public LayerMask capaAgua;
     public float distanciaVista = 1;
     public bool vivo = true;
+    public Animator animaciones; 
     
     
     // Start is called before the first frame update
@@ -84,6 +85,7 @@ public class Movimiento : MonoBehaviour
         }
         
         posicionZ++;
+        animaciones.SetTrigger("saltar");
         if (posicionZ > carril)
         {
             carril = posicionZ;
@@ -105,6 +107,7 @@ public class Movimiento : MonoBehaviour
         if (posicionZ > carril - 3)
         {
             posicionZ--;
+            animaciones.SetTrigger("saltar");
         }
     }
 
@@ -120,6 +123,7 @@ public class Movimiento : MonoBehaviour
             return;
         }
         lateral += cuanto;
+        animaciones.SetTrigger("saltar");
         lateral = Mathf.Clamp(lateral, -4, 4);
     }
 
@@ -141,6 +145,7 @@ public class Movimiento : MonoBehaviour
     {
         if (other.CompareTag("carro"))
         {
+            animaciones.SetTrigger("morir");
             vivo = false;
         }
     }
@@ -156,6 +161,8 @@ public class Movimiento : MonoBehaviour
         {
             if (hit.collider.CompareTag("Agua"))
             {
+                
+                animaciones.SetTrigger("agua");
                 vivo = false;
                 Debug.Log("Agua cai");
             }

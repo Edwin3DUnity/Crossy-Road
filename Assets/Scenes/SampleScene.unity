@@ -206,7 +206,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236837388}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -8.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -453,7 +453,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113965162}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -652,6 +652,7 @@ GameObject:
   - component: {fileID: 1929379432}
   - component: {fileID: 1929379435}
   - component: {fileID: 1929379434}
+  - component: {fileID: 1929379436}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -685,6 +686,7 @@ MonoBehaviour:
     m_Bits: 16
   distanciaVista: 1.1
   vivo: 1
+  animaciones: {fileID: 1929379436}
 --- !u!4 &1929379433
 Transform:
   m_ObjectHideFlags: 0
@@ -730,6 +732,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.38227043, y: 0.70216614, z: 0.5071681}
   m_Center: {x: -0.000000014901161, y: 0.34195748, z: -0.040618032}
+--- !u!95 &1929379436
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929379431}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c1cd8e611cde204484c3b00a1110902, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8114070633592462015
 PrefabInstance:
   m_ObjectHideFlags: 0
