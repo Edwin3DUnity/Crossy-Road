@@ -341,7 +341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -2.101, y: 3.862, z: -0.027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -550,6 +550,9 @@ MonoBehaviour:
   - {fileID: 5535051216024431964, guid: b32117434fc0d5e46bdb2066c0da4acf, type: 3}
   - {fileID: 5535051216024431964, guid: 0937d42a186f029418493fdd7b8e4666, type: 3}
   - {fileID: 5535051216024431964, guid: ed3cfa47a88250640af459c3a987d6c1, type: 3}
+  - {fileID: 3265311599779671959, guid: 4c6ba9704be20814280f9a8bcaf57d83, type: 3}
+  - {fileID: 3265311599779671959, guid: 83de6651c9460da4eb5b33caa4131d84, type: 3}
+  - {fileID: 3265311599779671959, guid: bf4d3bb64d1874c4a82e45085a7233d6, type: 3}
   - {fileID: 3265311599779671959, guid: ece72bcc2240a654db31ce5fc2d8416b, type: 3}
   carril: 1
   pisosDiferencia: 20
@@ -647,6 +650,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1929379433}
   - component: {fileID: 1929379432}
+  - component: {fileID: 1929379435}
+  - component: {fileID: 1929379434}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -675,7 +680,11 @@ MonoBehaviour:
   capaObstaculos:
     serializedVersion: 2
     m_Bits: 64
+  capaAgua:
+    serializedVersion: 2
+    m_Bits: 16
   distanciaVista: 1.1
+  vivo: 1
 --- !u!4 &1929379433
 Transform:
   m_ObjectHideFlags: 0
@@ -692,6 +701,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1929379434
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929379431}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &1929379435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929379431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.38227043, y: 0.70216614, z: 0.5071681}
+  m_Center: {x: -0.000000014901161, y: 0.34195748, z: -0.040618032}
 --- !u!1001 &8114070633592462015
 PrefabInstance:
   m_ObjectHideFlags: 0
