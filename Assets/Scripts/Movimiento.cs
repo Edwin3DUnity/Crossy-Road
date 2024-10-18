@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Movimiento : MonoBehaviour
@@ -19,8 +20,10 @@ public class Movimiento : MonoBehaviour
     public LayerMask capaAgua;
     public float distanciaVista = 1;
     public bool vivo = true;
-    public Animator animaciones; 
-    
+    public Animator animaciones;
+    public AnimationCurve curva;
+
+    private bool bloqueo= false;
     
     // Start is called before the first frame update
     void Start()
@@ -65,14 +68,32 @@ public class Movimiento : MonoBehaviour
         {
             return;
         }
-        posObjetivo = new Vector3(lateral, 0, posicionZ);
+        //posObjetivo = new Vector3(lateral, 0, posicionZ);
+        //transform.position = Vector3.Lerp(transform.position, posObjetivo, velocidad * Time.deltaTime);
        // transform.position = posObjetivo;
-       transform.position = Vector3.Lerp(transform.position, posObjetivo, velocidad * Time.deltaTime);
+       
     }
 
+    public IEnumerator CambiarPosicion()
+    {
+        bloqueo = true;
+        posObjetivo = new Vector3(lateral, 0, posicionZ);
+        Vector3 posActual = transform.position;
+
+        for (int i = 0; i < 10; i++)
+        {
+            transform.position = Vector3.Lerp(posActual, posObjetivo,i * 0.1f) + Vector3.up * curva.Evaluate(i * 0.1f);
+            yield return new WaitForSeconds(1f / velocidad);
+        }
+
+        bloqueo = false;
+
+
+    }
+    
     public void Avanzar()
     {
-        if (!vivo)
+        if (!vivo || bloqueo)
         {
             return;
             
@@ -85,17 +106,19 @@ public class Movimiento : MonoBehaviour
         }
         
         posicionZ++;
-        animaciones.SetTrigger("saltar");
+      //  animaciones.SetTrigger("saltar");
         if (posicionZ > carril)
         {
             carril = posicionZ;
             mundo.CrearPiso();
         }
+
+        StartCoroutine(CambiarPosicion());
     }
 
     public void Retroceder()
     {
-        if (!vivo)
+        if (!vivo || bloqueo)
         {
             return;
         }
@@ -107,13 +130,14 @@ public class Movimiento : MonoBehaviour
         if (posicionZ > carril - 3)
         {
             posicionZ--;
-            animaciones.SetTrigger("saltar");
+           // animaciones.SetTrigger("saltar");
         }
+        StartCoroutine(CambiarPosicion());
     }
 
     public void MoverLados(int cuanto)
     {
-        if (!vivo)
+        if (!vivo || bloqueo)
         {
             return;
         }
@@ -123,8 +147,10 @@ public class Movimiento : MonoBehaviour
             return;
         }
         lateral += cuanto;
-        animaciones.SetTrigger("saltar");
+      //  animaciones.SetTrigger("saltar");
+        
         lateral = Mathf.Clamp(lateral, -4, 4);
+        StartCoroutine(CambiarPosicion());
     }
 
 
