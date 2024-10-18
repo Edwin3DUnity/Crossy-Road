@@ -6,6 +6,9 @@ TagManager:
   tags:
   - carro
   - Agua
+  - hoja
+  - objstaculo
+  - obstaculo
   layers:
   - Default
   - TransparentFX

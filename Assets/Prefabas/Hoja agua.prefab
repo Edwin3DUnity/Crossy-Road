@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8314670876229633372}
   - component: {fileID: 4040511051655583409}
   - component: {fileID: 2444808224542640065}
+  - component: {fileID: 2134697826470240194}
   m_Layer: 4
   m_Name: Hoja agua
-  m_TagString: Untagged
+  m_TagString: hoja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0655413, y: 1, z: 1.0543693}
   m_Center: {x: 0.0017247498, y: 0, z: -0.027184466}
+--- !u!114 &2134697826470240194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807018373964782589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9ffa13d7dfc404ea5755a5936020b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoja: {fileID: 7807018373964782589}
